@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mdpustudio.is.models.Animal;
+import com.mdpustudio.is.models.Producto;
 import com.mdpustudio.is.models.Proveedor;
 import com.mdpustudio.is.repositories.AnimalRepository;
+import com.mdpustudio.is.repositories.ProductoRepository;
 import com.mdpustudio.is.repositories.ProveedorRepository;
 
 
