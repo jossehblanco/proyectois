@@ -1,21 +1,13 @@
-/*CREATE TABLE SPONSOR(
-    idsponsor SERIAL PRIMARY KEY,
-    monto money, 
-    startdate date,
-    enddate date 
-    active boolean
-)
-
-CREATE TABLE SPONSORXANIMAL(
-    idanimal int,
-    idsponsor int
-);
-*/
-
+/* PONER LOS DROP AQUI */
 DROP TABLE ESPECIE;
 DROP TABLE UBICACION;
 DROP TABLE ANIMAL;
+DROP TABLE EMAIL;
+DROP TABLE PROVEEDOR;
+DROP TABLE PRODUCTO;
 
+
+/*PONER LOS CREATE TABLE AQUI */
 CREATE TABLE ESPECIE(
     idespecie SERIAL PRIMARY KEY,
     nombre varchar(20)
@@ -43,50 +35,54 @@ CREATE TABLE ANIMAL (
         ON DELETE NO ACTION
 );
 
+CREATE TABLE EMAIL (
+    idemail SERIAL PRIMARY KEY,
+    email varchar(50)    
+);
+
+
+
+
+CREATE TABLE PROVEEDOR (
+    idproveedor SERIAL PRIMARY KEY,
+    nombreproveedor varchar(20),
+    descproveedor text,
+    idemail int,
+    CONSTRAINT FK_email FOREIGN KEY (idemail) 
+        REFERENCES EMAIL(idemail) 
+        ON DELETE NO ACTION    
+);
+
+
+CREATE TABLE PRODUCTO(
+	idproducto SERIAL PRIMARY KEY,
+	nombreProducto varchar(20),
+	precio money,
+	descripcionproducto text,
+	calificacion int,
+	idproveedor int,
+	CONSTRAINT FK_idProveedor FOREIGN KEY (idproveedor)
+	 REFERENCES PROVEEDOR(idproveedor)
+	 ON DELETE NO ACTION 
+);
+
+
+/*Poner los inserts aqui */
+
 INSERT INTO ESPECIE(nombre) VALUES ('especie de prueba');
 INSERT INTO UBICACION(nombreubicacion) VALUES ('lugar de prueba');
 INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubicacion) VALUES ('prueba', 12, 150, 'ORH+', 'Esto es solo una prueba', 1, 1);
 INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubicacion) VALUES ('prueba', 5, 150, 'verde musgo', 'Apadriname porfis', 1, 1);
 
 
-
-CREATE TABLE PRODUCTO(
-	idProducto SERIAL PRIMARY KEY,
-	nombreProducto varchar(20),
-	precio money,
-	descripcionProducto text,
-	calificacion int,
-	idProveedor int,
-	CONSTRAINT FK_idProveedor FOREIGN KEY (idproveedor)
-	 REFERENCES PROVEEDOR(idproveedor)
-	 ON DELETE NO ACTION 
-);
-INSER INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idProveedor) VALUES ('prueba',500,'descripcion de producto', 10, 1);
-INSER INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idProveedor) VALUES ('prueba2',400,'descripcion de producto 2', 5, 1);
-
-
-
-/*SQL de AlexanderRivz*/
-
-CREATE TABLE EMAIL (
-    idEmail SERIAL PRIMARY KEY,
-    email varchar(50)    
-);
-
 INSERT INTO EMAIL(email) VALUES ('arielchocogamer@gmail.com');
 INSERT INTO EMAIL(email) VALUES ('robertololilover@gmail.com');
 
+INSERT INTO PROVEEDOR(nombreproveedor, descproveedor, idemail) VALUES('Ariel', 'Provee juguetitos cool', 1);
+INSERT INTO PROVEEDOR(nombreproveedor, descproveedor, idemail) VALUES('Roberto','Provee peluches turbo cool', 2);
 
-CREATE TABLE PROVEEDOR (
-    idproveedor SERIAL PRIMARY KEY,
-    nombreProveedor varchar(20),
-    descProveedor text,
-    idEmail int,
-    CONSTRAINT FK_email FOREIGN KEY (idEmail) 
-        REFERENCES EMAIL(idEmail) 
-        ON DELETE NO ACTION    
-);
+INSERT INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idproveedor) VALUES ('prueba',500,'descripcion de producto', 10, 1);
+INSERT INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idproveedor) VALUES ('prueba2',400,'descripcion de producto 2', 5, 1);
 
-INSERT INTO PROVEEDOR(nombreProveedor, descProveedor, idEmail) VALUES('Ariel', 'Provee juguetitos cool', 1);
-INSERT INTO PROVEEDOR(nombreProveedor, descProveedor, idEmail) VALUES('Roberto','Provee peluches turbo cool', 2);
+
 
