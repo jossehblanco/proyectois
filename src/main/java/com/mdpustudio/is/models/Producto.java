@@ -11,22 +11,22 @@ import javax.persistence.Table;
 public class Producto {
 	@Id
 	@GeneratedValue
-	@Column (name="idProducto", nullable =false)
+	@Column (name="idproducto", nullable =false)
 	private long id;
 	
-	@Column(name="NombreProducto", nullable=false)
+	@Column(name="nombreproducto", nullable=false)
 	private String nombreProducto;
 	
 	@Column(name="precio", nullable=false)
 	private float precio;
 	
-	@Column(name="descripcionProducto", nullable=false)
+	@Column(name="descripcionproducto", nullable=false)
 	private String DescripcionProducto;
 	
 	@Column(name="calificacion", nullable=false)
 	private int calificacion;
 	
-	@Column(name="idProveedor", nullable=false)
+	@Column(name="idproveedor", nullable=false)
 	private long idProveedor;
 
 	public long getId() {
