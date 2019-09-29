@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mdpustudio.is.models.Animal;
+import com.mdpustudio.is.models.Proveedor;
 import com.mdpustudio.is.repositories.AnimalRepository;
+import com.mdpustudio.is.repositories.ProveedorRepository;
 
 
 
@@ -25,6 +28,7 @@ public class WebController {
 	//Con Request mapping, mapeamos codigo java a una url determinado. Por ejemplo
 	//Si accedemos a localhost:8080/sample se va a ejecutar el siguiente código.
 	/*
+	@CrossOrigin
 	@RequestMapping("/sample")
 	public SampleResponse Sample(@RequestParam(value = "name", defaultValue = "Robot") String name) {
 		SampleResponse response = new SampleResponse();
@@ -41,6 +45,7 @@ public class WebController {
 	private AnimalRepository animalRepository;
 	
 	//Utilizamos GET para obtener una lista de los animales en localhost:8080/animales
+	@CrossOrigin
 	@GetMapping("/animales")
 	public List<Animal>  getAllAnimales(){
 		return animalRepository.findAll();
@@ -53,9 +58,27 @@ public class WebController {
 	//FindById retorna un tipo Optional<Animal> porque puede ser nulo o levantar alguna excepción.
 	//Se utilizó findByID(id).orElse(null) para retornar un nulo en caso de que el id del animal no se encuentre.
 	
+	@CrossOrigin
 	@GetMapping("/animales/{id}")
 	public ResponseEntity<Animal> getAnimalById( @PathVariable(value = "id") Long animalId){
 		Animal animal = animalRepository.findById(animalId).orElse(null);
 		return ResponseEntity.ok().body(animal);
 	}
+	
+	@Autowired
+	private ProveedorRepository proveedorRepository;
+	
+	@CrossOrigin
+	@GetMapping("/proveedor/{id}")
+	public ResponseEntity<Proveedor> getProveedorById( @PathVariable(value = "id") Long proveedorId){
+		Proveedor proveedor = proveedorRepository.findById(proveedorId).orElse(null);
+		return ResponseEntity.ok().body(proveedor);
+	}
+	
+	@CrossOrigin
+	@GetMapping("/proveedor")
+	public List<Proveedor> getAllProveedores(){
+		return proveedorRepository.findAll();
+	}
+	
 }

@@ -1,0 +1,9 @@
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/models/SampleResponse.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/controller/WebController.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/models/Ubicacion.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/models/Email.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/models/Animal.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/repositories/ProveedorRepository.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/repositories/AnimalRepository.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/ProyectoIsApplication.java
+/home/alexander/ProyectoIS/src/main/java/com/mdpustudio/is/models/Proveedor.java
