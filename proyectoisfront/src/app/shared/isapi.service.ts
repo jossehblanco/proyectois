@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http'
 import {Animal} from './models/animal'
 import {Observable, throwError} from 'rxjs'
 import {retry, catchError} from 'rxjs/operators'
+import {Proveedores} from './models/proveedores'
 
 
 
@@ -26,9 +27,19 @@ export class IsapiService {
       .pipe(retry(1), catchError(this.errorHandl));
     }
 
+    getProveedores(): Observable<Proveedores>{
+      return this.httpclient.get<Proveedores>(this.baseurl+'/proveedor')
+      .pipe(retry(1), catchError(this.errorHandl));
+    }
+
     //Obtener animal x id, recibe un id como argumento y consulta baseurl/animales/id
     getAnimal(id : number): Observable<Animal>{
       return this.httpclient.get<Animal>(this.baseurl+'/animales/' + id)
+      .pipe(retry(1), catchError(this.errorHandl));
+    }
+
+    getProveedor(id : number): Observable<Proveedores>{
+      return this.httpclient.get<Proveedores>(this.baseurl+'/proveedor/' + id)
       .pipe(retry(1), catchError(this.errorHandl));
     }
 

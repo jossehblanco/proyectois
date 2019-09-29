@@ -6,14 +6,18 @@ import { AppComponent } from './app.component';
 import { AnimalesComponent } from './animales/animales.component';
 import { HttpClientModule }  from '@angular/common/http';
 import {IsapiService} from './shared/isapi.service';
-import { AnimalComponent } from './animal/animal.component'
+import { AnimalComponent } from './animal/animal.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { ProveedorComponent } from './proveedor/proveedor.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalesComponent,
-    AnimalComponent
+    AnimalComponent,
+    ProveedoresComponent,
+    ProveedorComponent
   ],
   imports: [
     BrowserModule,
