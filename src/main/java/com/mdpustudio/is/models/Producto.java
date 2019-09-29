@@ -1,9 +1,13 @@
 package com.mdpustudio.is.models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="PRODUCTO")
 public class Producto {
 	@Id
 	@GeneratedValue
@@ -16,13 +20,13 @@ public class Producto {
 	@Column(name="precio", nullable=false)
 	private float precio;
 	
-	@Column(name="DescripcionProducto", nullable=false)
+	@Column(name="descripcionProducto", nullable=false)
 	private String DescripcionProducto;
 	
-	@Column(name="Calificacion", nullable=false)
+	@Column(name="calificacion", nullable=false)
 	private int calificacion;
 	
-	@Column(name="IdProveedor", nullable=false)
+	@Column(name="idProveedor", nullable=false)
 	private long idProveedor;
 
 	public long getId() {

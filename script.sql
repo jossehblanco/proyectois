@@ -50,7 +50,7 @@ INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubic
 
 CREATE TABLE PRODUCTO(
 	idProducto SERIAL PRIMARY KEY,
-	nombre varchar(20),
+	nombreProducto varchar(20),
 	precio money,
 	descripcionProducto text,
 	calificacion int,
