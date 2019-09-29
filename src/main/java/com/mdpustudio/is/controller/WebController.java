@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mdpustudio.is.models.Animal;
+import com.mdpustudio.is.models.Producto;
 import com.mdpustudio.is.repositories.AnimalRepository;
+import com.mdpustudio.is.repositories.ProductoRepository;
 
 
 
@@ -39,11 +41,17 @@ public class WebController {
 	
 	@Autowired
 	private AnimalRepository animalRepository;
+	@Autowired
+	private ProductoRepository productoRepository;
 	
 	//Utilizamos GET para obtener una lista de los animales en localhost:8080/animales
 	@GetMapping("/animales")
 	public List<Animal>  getAllAnimales(){
 		return animalRepository.findAll();
+	}
+	@GetMapping("/productos")
+	public List<Producto> getAllProductos(){
+		return productoRepository.findAll();
 	}
 	
 	
@@ -57,5 +65,10 @@ public class WebController {
 	public ResponseEntity<Animal> getAnimalById( @PathVariable(value = "id") Long animalId){
 		Animal animal = animalRepository.findById(animalId).orElse(null);
 		return ResponseEntity.ok().body(animal);
+	}
+	@GetMapping("/productos/{id}")
+	public ResponseEntity<Producto> getProductById(@PathVariable(value="id") Long productoId){
+		Producto producto = productoRepository.findById(productoId).orElse(null);
+		return ResponseEntity.ok().body(producto);
 	}
 }
