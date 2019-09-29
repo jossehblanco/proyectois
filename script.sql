@@ -46,4 +46,34 @@ CREATE TABLE ANIMAL (
 INSERT INTO ESPECIE(nombre) VALUES ('especie de prueba');
 INSERT INTO UBICACION(nombreubicacion) VALUES ('lugar de prueba');
 INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubicacion) VALUES ('prueba', 12, 150, 'ORH+', 'Esto es solo una prueba', 1, 1);
-INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubicacion) VALUES ('prueba', 5, 150, 'verde musgo', 'Apadriname porfis', 1, 1);
+INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubicacion) VALUES ('prueba', 5, 150, 'verdemusgo', 'Apadriname porfis', 1, 1);
+
+
+
+/*SQL de AlexanderRivz*/
+
+CREATE TABLE EMAIL (
+    idEmail SERIAL PRIMARY KEY,
+    email varchar(50)    
+);
+
+INSERT INTO EMAIL(email) VALUES ('arielchocogamer@gmail.com');
+INSERT INTO EMAIL(email) VALUES ('robertololilover@gmail.com');
+
+
+CREATE TABLE PROVEEDOR (
+    idproveedor SERIAL PRIMARY KEY,
+    nombreProveedor varchar(20),
+    descProveedor text,
+    idEmail int,
+    CONSTRAINT FK_email FOREIGN KEY (idEmail) 
+        REFERENCES EMAIL(idEmail) 
+        ON DELETE NO ACTION    
+);
+
+INSERT INTO PROVEEDOR(nombreProveedor, descProveedor, idEmail) VALUES('Ariel', 'Provee juguetitos cool', 1);
+INSERT INTO PROVEEDOR(nombreProveedor, descProveedor, idEmail) VALUES('Roberto','Provee peluches turbo cool', 2);
+
+
+
+
