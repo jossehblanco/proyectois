@@ -5,19 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimalesComponent } from './animales/animales.component';
 import { HttpClientModule }  from '@angular/common/http';
+import {IsapiService} from './shared/isapi.service';
+import { AnimalComponent } from './animal/animal.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnimalesComponent
+    AnimalesComponent,
+    AnimalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [IsapiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
