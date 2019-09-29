@@ -47,3 +47,19 @@ INSERT INTO ESPECIE(nombre) VALUES ('especie de prueba');
 INSERT INTO UBICACION(nombreubicacion) VALUES ('lugar de prueba');
 INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubicacion) VALUES ('prueba', 12, 150, 'ORH+', 'Esto es solo una prueba', 1, 1);
 INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion,idespecie, idubicacion) VALUES ('prueba', 5, 150, 'verde musgo', 'Apadriname porfis', 1, 1);
+
+
+
+CREATE TABLE PRODUCTO(
+	idProducto SERIAL PRIMARY KEY,
+	nombreProducto varchar(20),
+	precio money,
+	descripcionProducto text,
+	calificacion int,
+	idProveedor int,
+	CONSTRAINT FK_idProveedor FOREIGN KEY (idproveedor)
+	 REFERENCES PROVEEDOR(idproveedor)
+	 ON DELETE NO ACTION 
+);
+INSER INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idProveedor) VALUES ('prueba',500,'descripcion de producto', 10, 1);
+INSER INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idProveedor) VALUES ('prueba2',400,'descripcion de producto 2', 5, 1);

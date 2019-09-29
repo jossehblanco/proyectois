@@ -47,12 +47,19 @@ public class WebController {
 	@Autowired
 	private ProveedorRepository proveedorRepository;
 
+	@Autowired
+	private ProductoRepository productoRepository;
 
 	//Utilizamos GET para obtener una lista de los animales en localhost:8080/animales
 	@CrossOrigin
 	@GetMapping("/animales")
 	public List<Animal>  getAllAnimales(){
 		return animalRepository.findAll();
+	}
+	@CrossOrigin
+	@GetMapping("/productos")
+	public List<Producto> getAllProductos(){
+		return productoRepository.findAll();
 	}
 	
 	
@@ -68,7 +75,13 @@ public class WebController {
 		Animal animal = animalRepository.findById(animalId).orElse(null);
 		return ResponseEntity.ok().body(animal);
 	}
-	
+	@CrossOrigin
+	@GetMapping("/productos/{id}")
+	public ResponseEntity<Producto> getProductById(@PathVariable(value="id") Long productoId){
+		Producto producto = productoRepository.findById(productoId).orElse(null);
+		return ResponseEntity.ok().body(producto);
+	}
+
 	//AlexanderRivz
 	@CrossOrigin
 	@GetMapping("/proveedor/{id}")
