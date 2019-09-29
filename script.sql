@@ -63,3 +63,30 @@ CREATE TABLE PRODUCTO(
 );
 INSER INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idProveedor) VALUES ('prueba',500,'descripcion de producto', 10, 1);
 INSER INTO PRODUCTO(nombre,precio,descripcionProducto,calificacion,idProveedor) VALUES ('prueba2',400,'descripcion de producto 2', 5, 1);
+
+
+
+/*SQL de AlexanderRivz*/
+
+CREATE TABLE EMAIL (
+    idEmail SERIAL PRIMARY KEY,
+    email varchar(50)    
+);
+
+INSERT INTO EMAIL(email) VALUES ('arielchocogamer@gmail.com');
+INSERT INTO EMAIL(email) VALUES ('robertololilover@gmail.com');
+
+
+CREATE TABLE PROVEEDOR (
+    idproveedor SERIAL PRIMARY KEY,
+    nombreProveedor varchar(20),
+    descProveedor text,
+    idEmail int,
+    CONSTRAINT FK_email FOREIGN KEY (idEmail) 
+        REFERENCES EMAIL(idEmail) 
+        ON DELETE NO ACTION    
+);
+
+INSERT INTO PROVEEDOR(nombreProveedor, descProveedor, idEmail) VALUES('Ariel', 'Provee juguetitos cool', 1);
+INSERT INTO PROVEEDOR(nombreProveedor, descProveedor, idEmail) VALUES('Roberto','Provee peluches turbo cool', 2);
+
