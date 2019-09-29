@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mdpustudio.is.models.Animal;
+import com.mdpustudio.is.models.Proveedor;
 import com.mdpustudio.is.repositories.AnimalRepository;
+import com.mdpustudio.is.repositories.ProveedorRepository;
 
 
 
@@ -26,6 +28,7 @@ public class WebController {
 	//Con Request mapping, mapeamos codigo java a una url determinado. Por ejemplo
 	//Si accedemos a localhost:8080/sample se va a ejecutar el siguiente código.
 	/*
+	@CrossOrigin
 	@RequestMapping("/sample")
 	public SampleResponse Sample(@RequestParam(value = "name", defaultValue = "Robot") String name) {
 		SampleResponse response = new SampleResponse();
@@ -41,6 +44,10 @@ public class WebController {
 	@Autowired
 	private AnimalRepository animalRepository;
 	
+	@Autowired
+	private ProveedorRepository proveedorRepository;
+
+
 	//Utilizamos GET para obtener una lista de los animales en localhost:8080/animales
 	@CrossOrigin
 	@GetMapping("/animales")
@@ -61,4 +68,19 @@ public class WebController {
 		Animal animal = animalRepository.findById(animalId).orElse(null);
 		return ResponseEntity.ok().body(animal);
 	}
+	
+	//AlexanderRivz
+	@CrossOrigin
+	@GetMapping("/proveedor/{id}")
+	public ResponseEntity<Proveedor> getProveedorById( @PathVariable(value = "id") Long proveedorId){
+		Proveedor proveedor = proveedorRepository.findById(proveedorId).orElse(null);
+		return ResponseEntity.ok().body(proveedor);
+	}
+	
+	@CrossOrigin
+	@GetMapping("/proveedor")
+	public List<Proveedor> getAllProveedores(){
+		return proveedorRepository.findAll();
+	}
+	
 }
