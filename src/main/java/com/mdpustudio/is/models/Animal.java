@@ -2,9 +2,13 @@ package com.mdpustudio.is.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name="ANIMAL")
@@ -14,7 +18,7 @@ public class Animal {
 	@Id
 	@GeneratedValue 
 	@Column(name = "idanimal", nullable = false)
-	private long id;
+	private long idanimal;
 	
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
@@ -36,15 +40,18 @@ public class Animal {
 	
 	@Column(name = "idubicacion", nullable = false)
 	private long idubicacion;
+	
+	//@OneToMany(mappedBy = "Animal", fetch = FetchType.LAZY)
+	//private List<SponsorXAnimal> sponsorxanimal;
 
 	
 	//Getters y setters para el modelo Animal
 	public long getId() {
-		return id;
+		return idanimal;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.idanimal = id;
 	}
 
 	public String getNombre() {
@@ -102,6 +109,14 @@ public class Animal {
 	public void setIdubicacion(long idubicacion) {
 		this.idubicacion = idubicacion;
 	}
+
+	/*public List<SponsorXAnimal> getSponsorxanimal() {
+		return sponsorxanimal;
+	}
+
+	public void setSponsorxanimal(List<SponsorXAnimal> sponsorxanimal) {
+		this.sponsorxanimal = sponsorxanimal;
+	}*/
 	
 	
 	

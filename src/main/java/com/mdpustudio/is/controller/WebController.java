@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mdpustudio.is.models.Animal;
 import com.mdpustudio.is.models.Producto;
 import com.mdpustudio.is.models.Proveedor;
+import com.mdpustudio.is.models.SponsorXAnimal;
 import com.mdpustudio.is.repositories.AnimalRepository;
 import com.mdpustudio.is.repositories.ProductoRepository;
 import com.mdpustudio.is.repositories.ProveedorRepository;
+import com.mdpustudio.is.repositories.SponsorXAnimalRepository;
 
 
 
@@ -51,6 +53,9 @@ public class WebController {
 
 	@Autowired
 	private ProductoRepository productoRepository;
+	
+	@Autowired
+	private SponsorXAnimalRepository sponsorxanimalRepository;
 
 	//Utilizamos GET para obtener una lista de los animales en localhost:8080/animales
 	@CrossOrigin
@@ -97,5 +102,13 @@ public class WebController {
 	public List<Proveedor> getAllProveedores(){
 		return proveedorRepository.findAll();
 	}
+	
+	
+	@CrossOrigin
+	@GetMapping("/sponsor/{idanimal}")
+	public ResponseEntity<List<Object[]>> getSponsor(@PathVariable(value = "idanimal") Long idanimal){
+		List<Object[]> sponsorxanimal = sponsorxanimalRepository.findSponsorAnimal(idanimal);
+		return ResponseEntity.ok().body(sponsorxanimal);
+	}	
 	
 }
