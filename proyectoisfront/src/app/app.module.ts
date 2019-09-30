@@ -9,6 +9,8 @@ import {IsapiService} from './shared/isapi.service';
 import { AnimalComponent } from './animal/animal.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { ProveedorComponent } from './proveedor/proveedor.component'
+import { ProductosComponent } from './productos/productos.component';
+import { ProductoComponent } from './producto/producto.component'
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ProveedorComponent } from './proveedor/proveedor.component'
     AnimalesComponent,
     AnimalComponent,
     ProveedoresComponent,
-    ProveedorComponent
+    ProveedorComponent,
+    ProductosComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,

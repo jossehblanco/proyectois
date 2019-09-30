@@ -4,6 +4,7 @@ import {Animal} from './models/animal'
 import {Observable, throwError} from 'rxjs'
 import {retry, catchError} from 'rxjs/operators'
 import {Proveedores} from './models/proveedores'
+import { Producto } from './models/producto';
 
 
 
@@ -19,7 +20,7 @@ export class IsapiService {
 
 
     constructor(private httpclient : HttpClient){}
-
+  
 
     //Metodos GET
     getAnimales(): Observable<Animal>{
@@ -27,8 +28,19 @@ export class IsapiService {
       .pipe(retry(1), catchError(this.errorHandl));
     }
 
+    getProductos(): Observable<Producto>{
+      return this.httpclient.get<Producto>(this.baseurl+'/productos')
+      .pipe(retry(1), catchError(this.errorHandl));
+    }
+
     getProveedores(): Observable<Proveedores>{
       return this.httpclient.get<Proveedores>(this.baseurl+'/proveedor')
+      .pipe(retry(1), catchError(this.errorHandl));
+    }
+
+
+    getProducto(id : number): Observable<Producto>{
+      return this.httpclient.get<Producto>(this.baseurl+'/productos/' + id)
       .pipe(retry(1), catchError(this.errorHandl));
     }
 
