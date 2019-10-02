@@ -14,11 +14,11 @@
                     </thead>
   
                     <tbody>
-                        <tr *ngFor="let proveedor of listProveedores">
-                            <th scope="row">{{proveedor.idProveedor}}</th>
-                            <td>{{proveedor.nombreProveedor}}</td>
+                        <tr *ngFor="let proveedor of proveedores">
+                            <th scope="row">{{proveedor.id}}</th>
+                            <td>{{proveedor.nombre}}</td>
                             <td>
-                                <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['detalleproveedor', {id: proveedor.idProveedor}]"> Mostrar Detalle</button>
+                                <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['detalleproveedor', {id: proveedor.id}]"> Mostrar Detalle</button>
                             </td>
                         </tr>
                     </tbody>

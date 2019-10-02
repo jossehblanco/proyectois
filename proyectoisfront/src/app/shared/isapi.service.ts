@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import {Animal} from './models/animal'
+import {Animal, AnimalAdapter} from './models/animal'
 import {Observable, throwError} from 'rxjs'
+import {map} from 'rxjs/operators'
 import {retry, catchError} from 'rxjs/operators'
-import {Proveedores} from './models/proveedores'
-import { Producto } from './models/producto';
+import {Proveedor, ProveedorAdapter} from './models/proveedor'
+import { Producto, ProductoAdapter } from './models/producto';
 
 
 
@@ -19,10 +20,57 @@ export class IsapiService {
     baseurl = 'http://localhost:8080';
 
 
-    constructor(private httpclient : HttpClient){}
-  
+    constructor(private httpclient : HttpClient, private animaladapter: AnimalAdapter, private productoAdapter: ProductoAdapter, private proveedorAdapter : ProveedorAdapter){}
+    //GET
 
+    //Metodos que devuelven listas de Animales, Productos y Proveedores:
+
+
+    listAnimales(): Observable<Animal[]>{
+      const url = this.baseurl + '/animales'
+      return this.httpclient.get(url).pipe(
+        map((data: any[]) => data.map((item:any) => this.animaladapter.adapt(item)))
+      )
+    }
+
+    listProductos() : Observable<Producto[]>{
+      const url = this.baseurl + '/productos'
+      return this.httpclient.get(url).pipe(
+        map((data: any[]) => data.map((item:any) => this.productoAdapter.adapt(item)))
+      )
+    }
+
+    listProveedores() : Observable<Proveedor[]>{
+      const url = this.baseurl + '/proveedor'
+      return this.httpclient.get(url).pipe(
+        map((data: any[]) => data.map((item:any) => this.proveedorAdapter.adapt(item)))
+      )
+      
+    }
+
+
+    //Metodos que devuelven objetos singulares de animales, proveedores y productos
+
+    getAnimalById(id : number) : Observable<Animal>{
+      const url = this.baseurl + '/animales/' + id 
+      return this.httpclient.get(url).pipe(
+        map((data: any) => this.animaladapter.adapt(data)))      
+    }
+
+
+    getProductoById(id : number) : Observable<Producto>{
+      const url = this.baseurl + '/productos/' + id 
+      return this.httpclient.get(url).pipe(
+        map((data: any) => this.productoAdapter.adapt(data)))      
+    }
+
+    getProveedorById(id : number) : Observable<Proveedor>{
+      const url = this.baseurl + '/proveedor/' + id 
+      return this.httpclient.get(url).pipe(
+        map((data: any) => this.proveedorAdapter.adapt(data)))      
+    }
     //Metodos GET
+    /*
     getAnimales(): Observable<Animal>{
       return this.httpclient.get<Animal>(this.baseurl+'/animales')
       .pipe(retry(1), catchError(this.errorHandl));
@@ -54,7 +102,7 @@ export class IsapiService {
       return this.httpclient.get<Proveedores>(this.baseurl+'/proveedor/' + id)
       .pipe(retry(1), catchError(this.errorHandl));
     }
-
+    */
 
     //manejo de errores
     errorHandl(error){

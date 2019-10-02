@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IsapiService } from '../shared/isapi.service';
+import { Proveedor } from '../shared/models/proveedor';
 
 @Component({
   selector: 'app-proveedores',
@@ -8,18 +9,18 @@ import { IsapiService } from '../shared/isapi.service';
 })
 export class ProveedoresComponent implements OnInit {
 
-  constructor(private apiService: IsapiService) { }
+  constructor(private apiService: IsapiService) { 
+    this.proveedores = []
 
-  listProveedores : any=[];
-
-  ngOnInit() {
-    this.findAllProveedores();
   }
 
-  findAllProveedores(){
-    return this.apiService.getProveedores().subscribe((data: {}) => {
-      console.log(data);
-      this.listProveedores = data;
+  proveedores : Proveedor[]
+
+  
+
+  ngOnInit() {
+    this.apiService.listProveedores().subscribe((proveedores: Proveedor[]) => {
+      this.proveedores = proveedores
     })
   }
 

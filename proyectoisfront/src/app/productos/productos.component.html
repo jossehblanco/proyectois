@@ -14,9 +14,9 @@
                     </thead>
   
                     <tbody>
-                        <tr *ngFor="let producto of listProductos">
+                        <tr *ngFor="let producto of productos">
                             <th scope="row">{{producto.id}}</th>
-                            <td>{{producto.nombreProducto}}</td>
+                            <td>{{producto.nombre}}</td>
                             <td>
                                 <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['detalleproducto', {id: producto.id}]"> Mostrar Detalle</button>
                             </td>
