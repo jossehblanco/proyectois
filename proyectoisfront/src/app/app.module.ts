@@ -7,16 +7,31 @@ import { AnimalesComponent } from './animales/animales.component';
 import { HttpClientModule }  from '@angular/common/http';
 import {IsapiService} from './shared/isapi.service';
 import { AnimalComponent } from './animal/animal.component';
+<<<<<<< HEAD
 import { MenudemoComponent } from './menudemo/menudemo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {FlexLayoutModule} from "@angular/flex-layout";
+=======
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { ProveedorComponent } from './proveedor/proveedor.component'
+import { ProductosComponent } from './productos/productos.component';
+import { ProductoComponent } from './producto/producto.component'
+
+>>>>>>> sprint2
 
 @NgModule({
   declarations: [
     AppComponent,
     AnimalesComponent,
     AnimalComponent,
+<<<<<<< HEAD
     MenudemoComponent
+=======
+    ProveedoresComponent,
+    ProveedorComponent,
+    ProductosComponent,
+    ProductoComponent
+>>>>>>> sprint2
   ],
   imports: [
     BrowserModule,

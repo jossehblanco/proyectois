@@ -34,7 +34,7 @@ CREATE TABLE ANIMAL (
         ON DELETE NO ACTION,
     CONSTRAINT FK_ubicacion FOREIGN KEY (idubicacion) 
         REFERENCES UBICACION(idubicacion) 
-        ON DELETE NO ACTION,
+        ON DELETE NO ACTION
 );
 
 CREATE TABLE EMAIL (
@@ -111,6 +111,6 @@ INSERT INTO SPONSOR(nombresponsor, monto) VALUES ('Roberto',100);
 
 INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (1, 1);
 INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (2, 2);
-INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (5, 3);
+
 INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (5, 4);
 
