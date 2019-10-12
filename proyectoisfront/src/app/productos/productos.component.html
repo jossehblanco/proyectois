@@ -1,0 +1,30 @@
+<div class="container wrapper">
+    <div class="row">
+        <!-- Tabla animalitos -->
+        <div class="col-md-12">
+            <div class="inner">
+                <h3>Productos disponibles</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+  
+                    <tbody>
+                        <tr *ngFor="let producto of productos">
+                            <th scope="row">{{producto.id}}</th>
+                            <td>{{producto.nombre}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['detalleproducto', {id: producto.id}]"> Mostrar Detalle</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+  
+    </div>
+  </div>

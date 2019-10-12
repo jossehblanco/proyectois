@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IsapiService } from '../shared/isapi.service'
+import { Animal } from '../shared/models/animal';
 @Component({
   selector: 'app-animales',
   templateUrl: './animales.component.html',
@@ -8,24 +9,22 @@ import { IsapiService } from '../shared/isapi.service'
 export class AnimalesComponent implements OnInit {
   
   //se inyecta la dependencia de IsapiService
-  constructor(private apiService: IsapiService) { }
+  constructor(private apiService: IsapiService) {
+    this.animales = [];
+
+   }
 
 
   //Se declara una lista de animales tipo any
-   listAnimales  : any= [];
+   animales : Animal[] 
 
    
    //al iniciarse el componente se mandará a llamar findAllAnimales
   ngOnInit() {
-    this.findAllAnimales() 
-  }
-
-
-  //Declarando funcion para obtener lista de Animales y se suscribe al observer
-  findAllAnimales(){
-    return this.apiService.getAnimales().subscribe((data: {}) => {
-      console.log(data);
-      this.listAnimales = data;
+   
+    this.apiService.listAnimales().subscribe((animales: Animal[]) => {
+      console.log(animales)
+      this.animales = animales
     })
   }
 
