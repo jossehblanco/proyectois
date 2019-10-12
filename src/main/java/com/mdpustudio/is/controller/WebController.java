@@ -14,6 +14,7 @@ import com.mdpustudio.is.models.Animal;
 import com.mdpustudio.is.models.Producto;
 import com.mdpustudio.is.models.Proveedor;
 import com.mdpustudio.is.models.SponsorXAnimal;
+import com.mdpustudio.is.models.SponsorXAnimalAux;
 import com.mdpustudio.is.repositories.AnimalRepository;
 import com.mdpustudio.is.repositories.ProductoRepository;
 import com.mdpustudio.is.repositories.ProveedorRepository;
@@ -106,8 +107,8 @@ public class WebController {
 	
 	@CrossOrigin
 	@GetMapping("/sponsor/{idanimal}")
-	public ResponseEntity<List<Object[]>> getSponsor(@PathVariable(value = "idanimal") Long idanimal){
-		List<Object[]> sponsorxanimal = sponsorxanimalRepository.findSponsorAnimal(idanimal);
+	public ResponseEntity<List<SponsorXAnimalAux>> getSponsor(@PathVariable(value = "idanimal") Long idanimal){	//En esta mandamos un ResponseEntity<List<*Nuestra interface*>> 
+		List<SponsorXAnimalAux> sponsorxanimal = sponsorxanimalRepository.findSponsorAnimal(idanimal);
 		return ResponseEntity.ok().body(sponsorxanimal);
 	}	
 	
