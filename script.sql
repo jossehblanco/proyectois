@@ -22,10 +22,10 @@ CREATE TABLE UBICACION(
 
 CREATE TABLE ANIMAL (
     idanimal SERIAL PRIMARY KEY,
-    nombre varchar(20),
+    nombre varchar(40),
     edad int,
     peso int,
-    tiposangre varchar(10),
+    tiposangre varchar(20),
     descripcion text,
     idespecie int,
     idubicacion int,
@@ -64,6 +64,7 @@ CREATE TABLE PRODUCTO(
 	descripcionproducto text,
 	calificacion int,
 	idproveedor int,
+    url_imagen text,
 	CONSTRAINT FK_idProveedor FOREIGN KEY (idproveedor)
 	 REFERENCES PROVEEDOR(idproveedor)
 	 ON DELETE NO ACTION 
@@ -89,21 +90,26 @@ CREATE TABLE SPONSORXANIMAL(
 
 /*Poner los inserts aqui */
 
-INSERT INTO ESPECIE(nombre) VALUES ('especie de prueba');
-INSERT INTO UBICACION(nombreubicacion) VALUES ('lugar de prueba');
-INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('Sonic The Hedgehog', 12, 150, 'Super Fast ORH+', 'Este animal es bien rápido y si sos sponsor de el, vas a ser sponsor de el... pero bien rápido.', 1, 1, 'https://i.kinja-img.com/gawker-media/image/upload/s--LQoLLQ1H--/c_scale,f_auto,fl_progressive,q_80,w_800/cvhprs9tjrz8ayzdatdo.jpg');
-INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('Chupacabras', 5, 150, 'Desconocido', 'COmo la lasagna. Duro por fuera, pero suave por dentro. Este cariñoso animal necesita de tu ayuda!', 1, 1, 'https://okdiario.com/img/2017/02/22/chupacabras-leyenda-verdad-ficcion-655x368.jpg');
-INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('Ariel', 23, 350, 'choco', 'Challenger mas famoso de El Salvador.', 1, 1, 'https://sss.moda.pe/imagen/apaisado/tres-temas-de-sech-han-sido-certificados-por-la-riaa-a974b.jpg');
+INSERT INTO ESPECIE(nombre) VALUES ('Castor');
+INSERT INTO ESPECIE(nombre) VALUES ('Alce');
+INSERT INTO ESPECIE(nombre) VALUES ('Elefante');
+
+INSERT INTO UBICACION(nombreubicacion) VALUES ('Canada');
+INSERT INTO UBICACION(nombreubicacion) VALUES ('Africa');
+
+INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion, url_imagen) VALUES ('Norbert', 12, 50, 'ORH+', 'Amigable castor llamado Norbert que necesita tu ayuda para poder salvar su ecosistema.', 1, 1, 'https://upload.wikimedia.org/wikipedia/commons/5/54/Beaver-Szmurlo.jpg');
+INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion, url_imagen) VALUES ('Bullwinkle', 5, 300, 'B+', 'Este Alce llamado Bullwinkle necesita de tu ayuda para poder protegerlo contra la caza furtiva.', 2, 1, 'https://misanimales.com/wp-content/uploads/2018/01/alce-caracteristicas.jpg');
+INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion, url_imagen) VALUES ('Manyula', 23, 800, 'B-', 'Elefante llamado manyula que necesita de tu apoyo para poder brindarle comida saludable.', 3, 2, 'https://www.lavanguardia.com/r/GODO/LV/p5/WebSite/2018/10/04/Recortada/img_csaez_20181004-123213_imagenes_lv_otras_fuentes_dsc_9613-264-kNLG-U452167509016VOD-992x558@LaVanguardia-Web.jpg');
 
 
-INSERT INTO EMAIL(email) VALUES ('arielchocogamer@gmail.com');
-INSERT INTO EMAIL(email) VALUES ('robertololilover@gmail.com');
+INSERT INTO EMAIL(email) VALUES ('ariel1234@gmail.com');
+INSERT INTO EMAIL(email) VALUES ('roberto4312@gmail.com');
 
-INSERT INTO PROVEEDOR(nombreproveedor, descproveedor, idemail) VALUES('Ariel', 'Provee juguetitos cool', 1);
-INSERT INTO PROVEEDOR(nombreproveedor, descproveedor, idemail) VALUES('Roberto','Provee peluches turbo cool', 2);
+INSERT INTO PROVEEDOR(nombreproveedor, descproveedor, idemail) VALUES('Ariel', 'Provee una amplia variedad de juguetes de peluche', 1);
+INSERT INTO PROVEEDOR(nombreproveedor, descproveedor, idemail) VALUES('Roberto','Provee una cantidad variada de rompecabezas', 2);
 
-INSERT INTO PRODUCTO(nombreProducto,precio,descripcionProducto,calificacion,idproveedor) VALUES ('prueba',500,'descripcion de producto', 10, 1);
-INSERT INTO PRODUCTO(nombreProducto,precio,descripcionProducto,calificacion,idproveedor) VALUES ('prueba2',400,'descripcion de producto 2', 5, 1);
+INSERT INTO PRODUCTO(nombreProducto,precio,descripcionProducto,calificacion,idproveedor, url_imagen) VALUES ('Peluche Castor',25,'Adorable peluche de un castor.', 10, 1,'https://images-na.ssl-images-amazon.com/images/I/91QU2f1rdHL._SY355_.jpg');
+INSERT INTO PRODUCTO(nombreProducto,precio,descripcionProducto,calificacion,idproveedor, url_imagen) VALUES ('Rompecabezas Castor',10,'Rompecabezas de 100 piezas con tematica de castor', 9, 2,'https://images-na.ssl-images-amazon.com/images/I/71vR7BNqRRL._SX425_.jpg');
 
 INSERT INTO SPONSOR(nombresponsor, monto) VALUES ('Josseh',300);
 INSERT INTO SPONSOR(nombresponsor, monto) VALUES ('Rodrigo',200);
@@ -112,6 +118,6 @@ INSERT INTO SPONSOR(nombresponsor, monto) VALUES ('Roberto',100);
 
 INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (1, 1);
 INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (2, 2);
-
-INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (5, 4);
+INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (3, 3);
+INSERT INTO SPONSORXANIMAL(idanimal, idsponsor) VALUES (3, 4);
 
