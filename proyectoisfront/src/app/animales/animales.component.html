@@ -1,30 +1,33 @@
-<div class="container wrapper">
-  <div class="row">
-      <!-- Tabla animalitos -->
-      <div class="col-md-12">
-          <div class="inner">
-              <h3>Animales disponibles</h3>
-              <table class="table table-bordered">
-                  <thead>
-                      <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Nombre Animal</th>
-                          <th scope="col">Action</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                      <tr *ngFor="let animal of animales">
-                          <th scope="row">{{animal.id}}</th>
-                          <td>{{animal.nombre}}</td>
-                          <td>
-                              <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['detalleanimal', {id: animal.id}]"> Mostrar Detalle</button>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side " opened>
+  
+    <div *ngFor="let animal of animales" style="margin: 8px;">
+                                <mat-card class="example-card">
+                                        <mat-card-header>
+                                          <img mat-card-avatar src="{{animal.url_imagen}}">
+                                          <mat-card-title>{{animal.nombre}}</mat-card-title>
+                                          
+                                        </mat-card-header>
+                                        <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+                                        
+                                        <mat-card-actions>
+                                          <button mat-button (click)="drawer.toggle()" routerLink="{{animal.id}}">VER DETALLES</button>
+                                        </mat-card-actions>
+                                      </mat-card>
+                                      
+                        </div>
+  </mat-drawer>
+<mat-drawer-content>
+  <div class="cardcontainer">
+    
+  <mat-card style="margin: 16px;" class="matcard">
+      <router-outlet style="margin: 0; padding: 0;"></router-outlet>
+        <mat-card-actions>
+            <button mat-button (click)="drawer.toggle()" routerLink="../animales">
+                <h2><</h2>
+              </button>
+          </mat-card-actions>
+  </mat-card>
   </div>
-</div>
+</mat-drawer-content>
+</mat-drawer-container>

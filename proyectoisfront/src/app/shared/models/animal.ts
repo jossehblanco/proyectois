@@ -7,7 +7,7 @@ export class Animal{
 
     constructor(id :number, nombre: string, edad : number, 
         peso: number, tiposangre: string, descripcion: string, 
-        idespecie: number, idubicacion : number){
+        idespecie: number, idubicacion : number, url_imagen:string){
             this.id = id
             this.nombre = nombre
             this.edad = edad
@@ -16,6 +16,7 @@ export class Animal{
             this.descripcion = descripcion
             this.idespecie = idespecie
             this.idubicacion = idubicacion
+            this.url_imagen = url_imagen
     }
     id : number
     nombre : string
@@ -25,6 +26,7 @@ export class Animal{
     descripcion : string
     idespecie : number
     idubicacion : number
+    url_imagen : string
 }
 
 @Injectable({
@@ -40,7 +42,8 @@ export class AnimalAdapter implements Adapter<Animal>{
             item.tipoSangre,
             item.descripcion,
             item.idespecie,
-            item.idubicacion)
+            item.idubicacion,
+            item.url_imagen)
     }
 
     

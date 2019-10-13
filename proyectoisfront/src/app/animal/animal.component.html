@@ -1,42 +1,31 @@
-<h2> Datos Animal</h2>
 
-<div class="container wrapper">
-        <div class="row">
-            <!-- Tabla animalitos -->
-            <div class="col-md-12">
-                <div class="inner">
+    <mat-card-header>
+      <mat-card-title>{{animal.nombre}}</mat-card-title>
+      <mat-card-subtitle>{{animal.edad}} años</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{animal.url_imagen}}">
+    <mat-card-content>
+            <h6>Peso: </h6>
+            <p>
+                {{animal.peso}} lbs.
+            </p>
+            <h6>Tipo de Sangre: </h6>
+            <p>
+                {{animal.tiposangre}}
+            </p>
+            <h6>Especie: </h6>
+      <p>
+          {{animal.idespecie}}
+      </p>
 
-                    
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre </th>
-                                <th scope="col">Peso</th>
-                                <th scope="col">Edad</th>  
-                                <th scope="col">Descripcion</th>
-                                <th scope="col">Especie</th>
-                                <th scope="col">Ubicacion</th>
-                                <th scope="col">Tipo De Sangre</th>
-                                
-                            </tr>
-                        </thead>
-      
-                        <tbody>
-                            <tr>
-                                    <th scope="col">{{animal.id}} </th>
-                                    <th scope="col">{{animal.nombre}} </th>
-                                    <th scope="col">{{animal.peso}}</th>
-                                    <th scope="col">{{animal.edad}}</th>  
-                                    <th scope="col">{{animal.descripcion}}</th>
-                                    <th scope="col">{{animal.idespecie}}</th>
-                                    <th scope="col">{{animal.idubicacion}}</th>
-                                    <th scope="col">{{animal.tiposangre}}</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-      
-        </div>
-      </div>
+            <h6>Ubicacion: </h6>
+      <p>
+          {{animal.idubicacion}}
+      </p>
+
+      <h6>Descripcion: </h6>
+      <p>
+          {{animal.descripcion}}
+      </p>
+    </mat-card-content>
+    
