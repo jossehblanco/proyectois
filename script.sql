@@ -29,6 +29,7 @@ CREATE TABLE ANIMAL (
     descripcion text,
     idespecie int,
     idubicacion int,
+    url_imagen text,
     CONSTRAINT FK_especie FOREIGN KEY (idespecie) 
         REFERENCES ESPECIE(idespecie) 
         ON DELETE NO ACTION,
@@ -90,9 +91,9 @@ CREATE TABLE SPONSORXANIMAL(
 
 INSERT INTO ESPECIE(nombre) VALUES ('especie de prueba');
 INSERT INTO UBICACION(nombreubicacion) VALUES ('lugar de prueba');
-INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('prueba', 12, 150, 'ORH+', 'Esto es solo una prueba', 1, 1);
-INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('prueba', 5, 150, 'verdemusgo', 'Apadriname porfis', 1, 1);
-INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('Ariel', 23, 350, 'choco', 'Me rento', 1, 1);
+INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('Sonic The Hedgehog', 12, 150, 'Super Fast ORH+', 'Este animal es bien rápido y si sos sponsor de el, vas a ser sponsor de el... pero bien rápido.', 1, 1, 'https://i.kinja-img.com/gawker-media/image/upload/s--LQoLLQ1H--/c_scale,f_auto,fl_progressive,q_80,w_800/cvhprs9tjrz8ayzdatdo.jpg');
+INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('Chupacabras', 5, 150, 'Desconocido', 'COmo la lasagna. Duro por fuera, pero suave por dentro. Este cariñoso animal necesita de tu ayuda!', 1, 1, 'https://okdiario.com/img/2017/02/22/chupacabras-leyenda-verdad-ficcion-655x368.jpg');
+INSERT INTO ANIMAL(nombre, edad, peso, tiposangre, descripcion, idespecie, idubicacion) VALUES ('Ariel', 23, 350, 'choco', 'Challenger mas famoso de El Salvador.', 1, 1, 'https://sss.moda.pe/imagen/apaisado/tres-temas-de-sech-han-sido-certificados-por-la-riaa-a974b.jpg');
 
 
 INSERT INTO EMAIL(email) VALUES ('arielchocogamer@gmail.com');
