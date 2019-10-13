@@ -1,14 +1,19 @@
 package com.mdpustudio.is.models;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import java.util.List;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.springframework.util.ResourceUtils;
 
 @Entity
 @Table(name="ANIMAL")
@@ -41,13 +46,28 @@ public class Animal {
 	@Column(name = "idubicacion", nullable = false)
 	private long idubicacion;
 	
+	
+	@Column(name = "url_imagen", nullable = false)
+	private String url_imagen;
+	
 	//@OneToMany(mappedBy = "Animal", fetch = FetchType.LAZY)
 	//private List<SponsorXAnimal> sponsorxanimal;
 
-	
+
 	//Getters y setters para el modelo Animal
+	
+	
+	
 	public long getId() {
 		return idanimal;
+	}
+
+	public String getUrl_imagen() {
+		return url_imagen;
+	}
+
+	public void setUrl_imagen(String url_imagen) {
+		this.url_imagen = url_imagen;
 	}
 
 	public void setId(long id) {

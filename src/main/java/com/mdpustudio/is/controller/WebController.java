@@ -1,10 +1,17 @@
 package com.mdpustudio.is.controller;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mdpustudio.is.models.Animal;
 import com.mdpustudio.is.models.Producto;
 import com.mdpustudio.is.models.Proveedor;
-import com.mdpustudio.is.models.SponsorXAnimal;
 import com.mdpustudio.is.models.SponsorXAnimalAux;
 import com.mdpustudio.is.repositories.AnimalRepository;
 import com.mdpustudio.is.repositories.ProductoRepository;
@@ -110,6 +116,6 @@ public class WebController {
 	public ResponseEntity<List<SponsorXAnimalAux>> getSponsor(@PathVariable(value = "idanimal") Long idanimal){	//En esta mandamos un ResponseEntity<List<*Nuestra interface*>> 
 		List<SponsorXAnimalAux> sponsorxanimal = sponsorxanimalRepository.findSponsorAnimal(idanimal);
 		return ResponseEntity.ok().body(sponsorxanimal);
-	}	
+	}
 	
 }
