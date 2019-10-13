@@ -1,22 +1,32 @@
-<mat-toolbar color="primary">
-
-    <button mat-button routerLink="/">
-    <mat-icon>home</mat-icon> 
-        {{title}}</button>
-
-    <!-- This fills the remaining space of the current row -->
-    <span class="fill-remaining-space"></span>
-    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="/products">Products</button>
-        <button mat-button routerLink="/dashboard">Dashboard</button>
+<div style="height: 100vh;"> 
+    <mat-toolbar color="primary">
+        <div fxShow="true" fxHide.gt-sm="true">
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <a mat-button class="companyName" routerLink="/">
+          <span>CastoresAnarquicos</span>
+        </a>
+        <span class="example-spacer"></span>
+        <div fxShow="true" fxHide.lt-md="true">
+          <a mat-button routerLink="/prices">Mercado</a>
+          <a mat-button routerLink="/animales">Adopciones</a>
+          <a mat-button routerLink="/offer">Sobre Nosotros</a>
+          <a mat-button routerLink="/contact">Contacto</a>
+        </div>
+      </mat-toolbar>
+      <mat-sidenav-container fxFlexFill class="example-container">
+        <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+          <div fxLayout="column">
+            <a mat-button routerLink="/prices">Mercado</a>
+            <a mat-button routerLink="/animales">Adopciones</a>
+            <a mat-button routerLink="/offer">Sobre Nosotros</a>
+            <a mat-button routerLink="/contact">Contacto</a>
+          </div>
+        </mat-sidenav>
+        <mat-sidenav-content fxFlexFill>
+          Animalitos++
+        </mat-sidenav-content>
+      </mat-sidenav-container>
     </div>
-    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-     <mat-icon>menu</mat-icon>
-    </button>
-
-</mat-toolbar>
-<mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item routerLink="/products">Products</button>
-    <button mat-menu-item routerLink="/dashboard">Dashboard</button>
-    <!--<button mat-menu-item>Help</button>-->
-</mat-menu>
