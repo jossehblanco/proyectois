@@ -1,17 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimalesComponent } from './animales/animales.component';
 import { HttpClientModule }  from '@angular/common/http';
 import {IsapiService} from './shared/isapi.service';
 import { AnimalComponent } from './animal/animal.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { ProveedorComponent } from './proveedor/proveedor.component'
 import { ProductosComponent } from './productos/productos.component';
-import { ProductoComponent } from './producto/producto.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCheckboxModule, MatDividerModule, MatNativeDateModule, MatRippleModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
@@ -42,6 +41,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ProductoComponent } from './producto/producto.component'
 import { FormsModule } from '@angular/forms';
 
 
@@ -57,6 +57,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     AppRoutingModule,
@@ -95,7 +96,14 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatTabsModule,
     MatTooltipModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
   ],
   providers: [IsapiService],
   bootstrap: [AppComponent]
