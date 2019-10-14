@@ -1,37 +1,18 @@
-<h2> Datos Producto</h2>
 
-<div class="container wrapper">
-        <div class="row">
-            <!-- Tabla animalitos -->
-            <div class="col-md-12">
-                <div class="inner">
+    <mat-card-header>
+        <mat-card-title>{{producto.nombre}}</mat-card-title>
+        <mat-card-subtitle>$ {{producto.precio}} </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{producto.url_imagen}}">
+      <mat-card-content>
+            <h6>Calificacion:</h6>
+            <p>{{producto.calificacion}}</p>
 
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre </th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Calificacion</th>  
-                                <th scope="col">idProveedor</th>
-                                <th scope="col">descripcion</th>
-                                
-                            </tr>
-                        </thead>
+            <h6>Proveedor: </h6>
+            <p>{{producto.idproveedor}}</p>
+
+            <h6>Descripcion: </h6>
+            <p>{{producto.descripcion}}</p>
+      </mat-card-content>
       
-                        <tbody>
-                            <tr>
-                                    <th scope="col">{{producto.id}} </th>
-                                    <th scope="col">{{producto.nombre}} </th>
-                                    <th scope="col">{{producto.precio}}</th>
-                                    <th scope="col">{{producto.calificacion}}</th>  
-                                    <th scope="col">{{producto.idproveedor}}</th>
-                                    <th scope="col">{{producto.descripcion}}</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-      
-        </div>
-      </div>
+  
