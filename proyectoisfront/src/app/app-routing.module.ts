@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path : '',children : [
-    {path : '', component : AppComponent},
     {path:'animales',
     component : AnimalesComponent, 
       children:[
