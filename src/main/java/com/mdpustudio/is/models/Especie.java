@@ -7,15 +7,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "UBICACION")
-public class Ubicacion {
-
+@Table(name = "ESPECIE")
+public class Especie {
+	
 	@Id
 	@GeneratedValue
-	@Column(name = "idubicacion", nullable = false)
+	@Column(name = "idespecie", nullable = false)
 	private long id;
 	
-	@Column(name = "nombreubicacion", nullable = false)
+	@Column(name = "nombre", nullable = false)
 	private String nombre;
 
 	//Setters & Getters UBICACION	
@@ -23,18 +23,17 @@ public class Ubicacion {
 		return this.id;
 	}
 
-	public void setId(long idUbicacion) {
-		this.id = idUbicacion;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
 		return this.nombre;
 	}
 
-	public void setNombre(String nombreUbicacion) {
-		this.nombre = nombreUbicacion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
-	
-	
+
 }
