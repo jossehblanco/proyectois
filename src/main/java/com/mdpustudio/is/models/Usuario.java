@@ -83,6 +83,18 @@ public class Usuario {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	public Usuario(String username, String password, String email, boolean active) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.active = active;
+	}
+	
+	public Usuario() {
+		
+	}
 	
 	
 	
