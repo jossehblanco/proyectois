@@ -109,3 +109,18 @@ CREATE TABLE PRODUCTO(
 INSERT INTO PRODUCTO(nombreProducto,precio,descripcionProducto,calificacion,idproveedor, url_imagen) VALUES ('Peluche Castor',25,'Adorable peluche de un castor.', 10, 1,'https://images-na.ssl-images-amazon.com/images/I/91QU2f1rdHL._SY355_.jpg');
 INSERT INTO PRODUCTO(nombreProducto,precio,descripcionProducto,calificacion,idproveedor, url_imagen) VALUES ('Rompecabezas Castor',10,'Rompecabezas de 100 piezas con tematica de castor', 9, 2,'https://images-na.ssl-images-amazon.com/images/I/71vR7BNqRRL._SX425_.jpg');
 
+
+CREATE TABLE COMENTARIOXPRODUCTO(
+    idcomentario SERIAL PRIMARY KEY,
+    idproducto int,
+    idusuario int,
+    descripcioncomentario text,
+    CONSTRAINT FK_idproducto FOREIGN KEY (idproducto) REFERENCES PRODUCTO(idproducto),
+    CONSTRAINT FK_idusuario FOREIGN KEY (idusuario) REFERENCES USUARIO(idusuario)
+    ON DELETE NO ACTION
+
+);
+
+INSERT INTO COMENTARIOXPRODUCTO(idproducto, idusuario, descripcioncomentario) VALUES (1,1,'hermoso peluche');
+INSERT INTO COMENTARIOXPRODUCTO(idproducto, idusuario, descripcioncomentario) VALUES (2,2,'que rompecabezas tan cul');
+
