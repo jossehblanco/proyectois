@@ -50,8 +50,9 @@ public class WebController {
 	private UsuarioRepository usuarioRepository;
 	
 	@CrossOrigin
-	@PostMapping("/auth")
+	@PostMapping("/auth/")
 	public String login(@RequestParam String username, @RequestParam String pass) {
+		System.out.println("Se recibio post");
 		List<Usuario> users = usuarioRepository.findAll();
 		Usuario user = null;
 		boolean authed = false;
@@ -94,7 +95,6 @@ public class WebController {
 		String secretKey = "mySecretKey";
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
 				.commaSeparatedStringToAuthorityList("ROLE_USER");
-		
 		String token = Jwts
 				.builder()
 				.setId("softtekJWT")

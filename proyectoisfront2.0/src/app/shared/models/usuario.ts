@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Adapter } from 'app/core/adapter'
+import { Sponsor } from './sponsor'
 
 //Esta clase contiene un modelo de Animal para ser mostrado con peticiones HTTP
 
@@ -17,7 +18,7 @@ export class Usuario{
     password : string  
     email : string
     active : boolean
-    sponsors :
+    sponsors : Sponsor[]
 }
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http'
 
 import {Observable, throwError} from 'rxjs'
 import {map} from 'rxjs/operators'
@@ -20,7 +20,7 @@ import { Producto, ProductoAdapter } from 'app/shared/models/producto';
 export class ApiService {
   //URL Base para consumir el servicio REST
     baseurl = 'http://localhost:8080';
-
+    auth_token = '';
 
     constructor(private httpclient : HttpClient, private animaladapter: AnimalAdapter, private productoAdapter: ProductoAdapter, private proveedorAdapter : ProveedorAdapter){}
     //GET
@@ -44,6 +44,7 @@ export class ApiService {
 
     listProveedores() : Observable<Proveedor[]>{
       const url = this.baseurl + '/proveedor'
+      
       return this.httpclient.get(url).pipe(
         map((data: any[]) => data.map((item:any) => this.proveedorAdapter.adapt(item)))
       )
@@ -71,6 +72,27 @@ export class ApiService {
       return this.httpclient.get(url).pipe(
         map((data: any) => this.proveedorAdapter.adapt(data)))      
     }
+
+
+    login(user : string, password : string ) : Observable<string>{
+      const datos = {'param' : { 'username' : user, 'pass' : password}}
+      const config = {headers : new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})}
+      const datos2 = JSON.stringify(datos)
+      console.log(datos)
+      console.log(datos2)
+      return this.httpclient.post('http://localhost:8080/auth/', '',
+      {
+        'params': {
+          'username': user,
+          'pass' : password
+        },
+        'headers': {
+          'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          'responseType' : 'text'
+        }
+        )
+  }
     //Metodos GET
     /*
     getAnimales(): Observable<Animal>{
