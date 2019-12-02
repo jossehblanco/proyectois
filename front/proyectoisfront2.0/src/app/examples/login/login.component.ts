@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'app/shared/services/apiservice.service';
-
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private apiService : ApiService) { 
+  constructor(private apiService : ApiService, private router : Router) { 
     
   }
 
@@ -22,12 +22,15 @@ export class LoginComponent implements OnInit {
     console.log("Se produjo un intento de inicio de sesión")
     console.log("Usuario ", data.user)
     console.log("Password ", data.pass)
-    if(this.apiService.login(data.user, data.pass) == true){
-      console.log("se inicio sesion!");
-    }else{
-      console.log("nombre de usuario o contraseña incorrectos");
-    }
 
-    console.log("EL token es ", this.apiService.auth_token);
+
+    this.apiService.login(data.user, data.pass).subscribe(data => {
+      this.apiService.auth_token = data;
+      this.apiService.listAnimales().subscribe(data => {console.log(data)});
+      this.router.navigate(['/landing'])
+    })
+
+    console.log("Inicio de sesión", this.apiService.auth_token);
+
   }
 }

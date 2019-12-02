@@ -12,6 +12,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { ApiService } from './shared/services/apiservice.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Intercept } from './shared/services/intercept';
 
 
 @NgModule({
@@ -29,7 +31,11 @@ import { ApiService } from './shared/services/apiservice.service';
     ExamplesModule,
     AppRoutingModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: Intercept,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

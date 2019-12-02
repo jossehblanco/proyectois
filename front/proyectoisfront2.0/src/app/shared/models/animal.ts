@@ -42,12 +42,16 @@ export class AnimalAdapter implements Adapter<Animal>{
 
     }
     adapt(item: any): Animal {
-        console.log(item)
-        var nsponsors : Sponsor[]
-        for(var sponsor in item.sponsors){
-            nsponsors.push(this.sponsorAdapter.adapt(sponsor))
-
+        console.log("Se recibio un item", item)
+        
+        var nsponsors : Sponsor[] = [];
+        for(var cosa in item.sponsors){
+            console.log("Data alv: ", item.sponsors[cosa]);
+            nsponsors.push(this.sponsorAdapter.adapt(item.sponsors[cosa]))
         }
+
+        
+        console.log("SPonsors: ", nsponsors)
         return new Animal(item.id, item.nombre, 
             item.edad,
             item.peso,

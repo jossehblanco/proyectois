@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoIsApplication<proyecto-is>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.mdpustudio.is.ProyectoIsApplication",
+            "projectName": "proyecto-is",
+            "args": ""
+        }
+    ]
+}

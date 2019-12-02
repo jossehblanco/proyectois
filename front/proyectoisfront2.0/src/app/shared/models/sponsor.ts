@@ -25,7 +25,7 @@ export class Sponsor{
 
 export class SponsorAdapter implements Adapter<Sponsor>{
     adapt(item: any): Sponsor {
-        console.log(item)
+        console.log("Desde el adapter: ", item)
         var nuevoUsuario = new Usuario(item.id, item.username, item.password, item.email, item.active)
         return new Sponsor(item.id, item.monto, nuevoUsuario)
     }
