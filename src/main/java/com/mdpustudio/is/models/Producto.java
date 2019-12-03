@@ -77,6 +77,21 @@ public class Producto {
 		this.idProveedor = idProveedor;
 	}
 
+	public Producto(long id, String nombreProducto, float precio, String descripcionProducto, int calificacion,
+			long idProveedor) {
+		super();
+		this.id = id;
+		this.nombreProducto = nombreProducto;
+		this.precio = precio;
+		DescripcionProducto = descripcionProducto;
+		this.calificacion = calificacion;
+		this.idProveedor = idProveedor;
+	}
+	
+	public Producto() {
+		
+	}
+
 	
 	
 }

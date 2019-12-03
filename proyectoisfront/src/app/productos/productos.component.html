@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side " opened>
     
@@ -23,7 +25,7 @@
     <mat-card style="margin: 16px;" class="matcard">
         <router-outlet style="margin: 0; padding: 0;"></router-outlet>
           <mat-card-actions>
-              <button mat-button (click)="drawer.toggle()" routerLink="../animales">
+              <button mat-button (click)="drawer.toggle()" routerLink="../productos">
                   Cerrar
                 </button>
             </mat-card-actions>

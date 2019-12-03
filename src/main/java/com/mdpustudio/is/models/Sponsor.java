@@ -54,8 +54,17 @@ public class Sponsor {
 		this.nombresponsor = nombresponsor;
 	}
 
+	public Sponsor(long idsponsor, String nombresponsor, float monto) {
+		super();
+		this.idsponsor = idsponsor;
+		this.nombresponsor = nombresponsor;
+		this.monto = monto;
+	}
+
 	
-	
+	public Sponsor() {
+		
+	}
 	/*public List<SponsorXAnimal> getSponsorxanimal() {
 		return sponsorxanimal;
 	}

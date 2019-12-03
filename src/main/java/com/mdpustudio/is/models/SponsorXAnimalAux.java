@@ -8,3 +8,4 @@ public interface SponsorXAnimalAux {
 	Long getMonto();			//en @Query: AS monto
 
 }
+

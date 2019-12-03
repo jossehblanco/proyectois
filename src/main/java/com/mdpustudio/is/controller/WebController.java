@@ -1,15 +1,20 @@
 package com.mdpustudio.is.controller;
 
 
+import java.sql.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mdpustudio.is.models.Animal;
@@ -22,6 +27,9 @@ import com.mdpustudio.is.repositories.ProductoRepository;
 import com.mdpustudio.is.repositories.ProveedorRepository;
 import com.mdpustudio.is.repositories.SponsorXAnimalRepository;
 import com.mdpustudio.is.repositories.UsuarioRepository;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 
 
@@ -137,6 +145,47 @@ public class WebController {
 	public ResponseEntity<List<SponsorXAnimalAux>> getSponsor(@PathVariable(value = "idanimal") Long idanimal){	//En esta mandamos un ResponseEntity<List<*Nuestra interface*>> 
 		List<SponsorXAnimalAux> sponsorxanimal = sponsorxanimalRepository.findSponsorAnimal(idanimal);
 		return ResponseEntity.ok().body(sponsorxanimal);
+	}
+	
+	
+	@CrossOrigin
+	@PostMapping("/auth/")
+	public String login(@RequestParam String username, @RequestParam String pass) {
+		System.out.println("Se recibio post");
+		List<Usuario> users = usuarioRepository.findAll();
+		Usuario user = null;
+		boolean authed = false;
+		for(int i = 0; i < users.size(); i++) {
+			if(username.matches(users.get(i).getUsername()) && pass.matches(users.get(i).getPwd())) {
+				user = users.get(i);
+				authed = true;
+				break;
+			}
+		}
+		if(authed) {
+			return this.getJWTToken(user.getUsername());
+		}else return "not found";
+	}
+	
+	
+	private String getJWTToken(String username) {
+		String secretKey = "mySecretKey";
+		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+				.commaSeparatedStringToAuthorityList("ROLE_USER");
+		String token = Jwts
+				.builder()
+				.setId("softtekJWT")
+				.setSubject(username)
+				.claim("authorities",
+						grantedAuthorities.stream()
+								.map(GrantedAuthority::getAuthority)
+								.collect(Collectors.toList()))
+				.setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + 600000))
+				.signWith(SignatureAlgorithm.HS512,
+						secretKey.getBytes()).compact();
+
+		return "Bearer " + token;
 	}
 	
 	

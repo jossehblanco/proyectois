@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimalesComponent } from './animales/animales.component';
-import { HttpClientModule }  from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS }  from '@angular/common/http';
 import {IsapiService} from './shared/isapi.service';
 import { AnimalComponent } from './animal/animal.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -49,6 +49,7 @@ import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { Intercept } from './shared/intercept';
 
 
 @NgModule({
@@ -117,7 +118,13 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
   ],
-  providers: [IsapiService],
+  providers: [IsapiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Intercept,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IsapiService} from '../shared/isapi.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,16 +9,16 @@ import {IsapiService} from '../shared/isapi.service'
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private apiService : IsapiService) { }
+  constructor(private apiService : IsapiService, private router : Router) { }
 
   ngOnInit() {
   }
 
   onClickSubmit(data) {
   	this.apiService.newuser(data.username, data.pwd).subscribe((response) => {
-  		console.log(response);
+      console.log(response);
+      this.router.navigate(['login']);
   		alert("¡Se creo un nuevo usuario!"); 
-
   	})
       
    }

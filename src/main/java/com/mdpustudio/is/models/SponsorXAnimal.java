@@ -44,6 +44,15 @@ public class SponsorXAnimal {
 		this.sponsor = sponsor;
 	}
 
-	
+	public SponsorXAnimal(long idsponsorxanimal, Animal animal, Sponsor sponsor) {
+		super();
+		this.idsponsorxanimal = idsponsorxanimal;
+		this.animal = animal;
+		this.sponsor = sponsor;
+	}
+
+	public SponsorXAnimal() {
+		
+	}
 
 }

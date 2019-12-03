@@ -58,6 +58,26 @@ public class Animal {
 	
 	
 	
+	
+	
+	public Animal() {
+		
+	}
+
+	public Animal(long idanimal, String nombre, int edad, int peso, String tipoSangre, String descripcion,
+			long idespecie, long idubicacion, String url_imagen) {
+		super();
+		this.idanimal = idanimal;
+		this.nombre = nombre;
+		this.edad = edad;
+		this.peso = peso;
+		this.tipoSangre = tipoSangre;
+		this.descripcion = descripcion;
+		this.idespecie = idespecie;
+		this.idubicacion = idubicacion;
+		this.url_imagen = url_imagen;
+	}
+
 	public long getId() {
 		return idanimal;
 	}

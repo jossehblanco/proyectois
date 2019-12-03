@@ -45,6 +45,17 @@ public class Usuario {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
+	public Usuario(int id, String username, String pwd) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.pwd = pwd;
+	}
 	
+	
+	public Usuario() {
+		
+	}
 
 }

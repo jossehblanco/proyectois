@@ -58,6 +58,16 @@ public class Proveedor {
 		this.idEmail = idEmail;
 	}
 
-	
+	public Proveedor(long idProveedor, String nombreProveedor, String descProveedor, long idEmail) {
+		super();
+		this.idProveedor = idProveedor;
+		this.nombreProveedor = nombreProveedor;
+		this.descProveedor = descProveedor;
+		this.idEmail = idEmail;
+	}
+
+	public Proveedor() {
+		
+	}
 
 }

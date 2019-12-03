@@ -30,7 +30,7 @@ export class Producto{
 export class ProductoAdapter implements Adapter<Producto>{
 
     adapt(item : any){
-
+       console.log(item);
         return new Producto(item.id, item.nombreProducto, item.precio, item.calificacion, item.idProveedor, item.descripcionProducto,
             item.url_imagen)
             

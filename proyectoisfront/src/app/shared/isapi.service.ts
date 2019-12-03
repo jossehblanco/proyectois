@@ -21,6 +21,8 @@ export class IsapiService {
   //URL Base para consumir el servicio REST
     baseurl = 'http://localhost:8080';
 
+    auth_token : string = '';
+
 
     constructor(private httpclient : HttpClient, private animaladapter: AnimalAdapter, private productoAdapter: ProductoAdapter, private proveedorAdapter : ProveedorAdapter, private sponsorAdapter : SponsorAdapter, private usuarioAdapter : UsuarioAdapter){}
     //GET
@@ -92,11 +94,12 @@ export class IsapiService {
     }
 
     login(user : string, password : string ) : Observable<string>{
-      const datos = {'param' : { 'username' : user, 'pass' : password}}
+      /*const datos = {'param' : { 'username' : user, 'pass' : password}}
       const config = {headers : new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})}
       const datos2 = JSON.stringify(datos)
       console.log(datos)
-      console.log(datos2)
+      console.log(datos2)*/
+
       return this.httpclient.post('http://localhost:8080/auth/', '',
       {
         'params': {

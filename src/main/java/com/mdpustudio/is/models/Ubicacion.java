@@ -34,7 +34,16 @@ public class Ubicacion {
 	public void setNombreUbicacion(String nombreUbicacion) {
 		this.nombreUbicacion = nombreUbicacion;
 	}
+
+	public Ubicacion(long idUbicacion, String nombreUbicacion) {
+		super();
+		this.idUbicacion = idUbicacion;
+		this.nombreUbicacion = nombreUbicacion;
+	}
 	
+	public Ubicacion() {
+		
+	}
 	
 	
 }
