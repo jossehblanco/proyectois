@@ -1,30 +1,27 @@
 package com.mdpustudio.is.controller;
 
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mdpustudio.is.models.Animal;
 import com.mdpustudio.is.models.Producto;
 import com.mdpustudio.is.models.Proveedor;
 import com.mdpustudio.is.models.SponsorXAnimalAux;
+import com.mdpustudio.is.models.Usuario;
 import com.mdpustudio.is.repositories.AnimalRepository;
 import com.mdpustudio.is.repositories.ProductoRepository;
 import com.mdpustudio.is.repositories.ProveedorRepository;
 import com.mdpustudio.is.repositories.SponsorXAnimalRepository;
+import com.mdpustudio.is.repositories.UsuarioRepository;
 
 
 
@@ -64,6 +61,9 @@ public class WebController {
 	@Autowired
 	private SponsorXAnimalRepository sponsorxanimalRepository;
 
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	//Utilizamos GET para obtener una lista de los animales en localhost:8080/animales
 	@CrossOrigin
 	@GetMapping("/animales")
@@ -75,6 +75,27 @@ public class WebController {
 	public List<Producto> getAllProductos(){
 		return productoRepository.findAll();
 	}
+	
+	
+	@CrossOrigin
+	@GetMapping("/usr")
+	public List<Usuario> getAllUsers(){
+		return usuarioRepository.findAll();
+	}
+	
+
+	@CrossOrigin
+	@PostMapping("/nusr")
+	  Usuario nUsuario(@RequestBody Usuario nUsuario) {
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+		System.out.println("POST");
+	    return usuarioRepository.save(nUsuario);
+	  }
 	
 	
 	//Aquí se utiliza @PathVariable para definir una variable que se mandará en el GET. Se utiliza antes de declarar Long animalId
@@ -117,5 +138,6 @@ public class WebController {
 		List<SponsorXAnimalAux> sponsorxanimal = sponsorxanimalRepository.findSponsorAnimal(idanimal);
 		return ResponseEntity.ok().body(sponsorxanimal);
 	}
+	
 	
 }

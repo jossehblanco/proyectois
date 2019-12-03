@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IsapiService } from '../shared/isapi.service'
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Animal } from '../shared/models/animal';
-
+import { Sponsor } from '../shared/models/sponsor';
 @Component({
   selector: 'app-animal',
   templateUrl: './animal.component.html',
@@ -15,6 +15,8 @@ export class AnimalComponent implements OnInit {
   //id que contendrá el valor que se pasará mediante la ruta
   animal : Animal
   id : number;
+
+  sponsors : Sponsor[];
 
   //Se inyecta la dependencia de IsapiService, y ActivatedRoute para obtener los parametros de la URL
   constructor(private apiService : IsapiService, private actRoute : ActivatedRoute, private router : Router) { 
@@ -34,7 +36,14 @@ export class AnimalComponent implements OnInit {
         this.apiService.getAnimalById(parseInt(params.get('id'))).subscribe((animal : Animal) =>{
           console.log(animal);
           this.animal = animal
-        })});
+        }
+        )
+
+        this.apiService.getSponsorsForAnimal(parseInt(params.get('id'))).subscribe((sponsors: Sponsor[]) => {
+          console.log("Sponsors: ", sponsors);
+          this.sponsors = sponsors;
+        })
+      });
       
 
     

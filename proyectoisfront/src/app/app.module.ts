@@ -43,6 +43,12 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProductoComponent } from './producto/producto.component'
 import { FormsModule } from '@angular/forms';
+import { SponsorsComponent } from './sponsors/sponsors.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { LandingComponent } from './landing/landing.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -53,7 +59,13 @@ import { FormsModule } from '@angular/forms';
     ProveedoresComponent,
     ProveedorComponent,
     ProductosComponent,
-    ProductoComponent
+    ProductoComponent,
+    SponsorsComponent,
+    LoginComponent,
+    RegisterComponent,
+    LandingComponent,
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

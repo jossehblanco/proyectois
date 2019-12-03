@@ -19,7 +19,7 @@ export class ProductoComponent implements OnInit {
   constructor(private apiService : IsapiService, private actRoute : ActivatedRoute, private router : Router) { 
     //seteamos id como el parametro que se recibe /animales/detalleAninal;id={id}
     this.id = this.actRoute.snapshot.paramMap.get('id');
-    this.producto = new Producto(0,"",0,0,0,"")
+    this.producto = new Producto(0,"",0,0,0,"","");
   }
 
   ngOnInit() {

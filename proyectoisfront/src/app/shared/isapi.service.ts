@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http'
 import {Animal, AnimalAdapter} from './models/animal'
 import {Observable, throwError} from 'rxjs'
 import {map} from 'rxjs/operators'
 import {retry, catchError} from 'rxjs/operators'
 import {Proveedor, ProveedorAdapter} from './models/proveedor'
 import { Producto, ProductoAdapter } from './models/producto';
+import { Sponsor, SponsorAdapter } from './models/sponsor';
+import {Usuario, UsuarioAdapter} from './models/usuario';
 
 
 
@@ -20,7 +22,7 @@ export class IsapiService {
     baseurl = 'http://localhost:8080';
 
 
-    constructor(private httpclient : HttpClient, private animaladapter: AnimalAdapter, private productoAdapter: ProductoAdapter, private proveedorAdapter : ProveedorAdapter){}
+    constructor(private httpclient : HttpClient, private animaladapter: AnimalAdapter, private productoAdapter: ProductoAdapter, private proveedorAdapter : ProveedorAdapter, private sponsorAdapter : SponsorAdapter, private usuarioAdapter : UsuarioAdapter){}
     //GET
 
     //Metodos que devuelven listas de Animales, Productos y Proveedores:
@@ -69,6 +71,49 @@ export class IsapiService {
       return this.httpclient.get(url).pipe(
         map((data: any) => this.proveedorAdapter.adapt(data)))      
     }
+
+    getSponsorsForAnimal(id : number) : Observable<Sponsor[]>{
+      const url = this.baseurl + '/sponsor/' + id 
+      return this.httpclient.get(url).pipe(
+          map((data: any[]) => data.map((item:any) => this.sponsorAdapter.adapt(item)))
+        )      
+    }
+
+
+    //POST
+
+    newuser(username : string, pwd: string) : Observable<Usuario>{
+      const datos = {'username': username, 'pwd' : pwd};
+      const config = {headers : new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})}
+      return this.httpclient.post('http://localhost:8080/nusr/', datos, config).pipe(
+          map((data: any) => this.usuarioAdapter.adapt(data)))   
+        
+
+    }
+
+    login(user : string, password : string ) : Observable<string>{
+      const datos = {'param' : { 'username' : user, 'pass' : password}}
+      const config = {headers : new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})}
+      const datos2 = JSON.stringify(datos)
+      console.log(datos)
+      console.log(datos2)
+      return this.httpclient.post('http://localhost:8080/auth/', '',
+      {
+        'params': {
+          'username': user,
+          'pass' : password
+        },
+        'headers': {
+          'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          'responseType' : 'text'
+        }
+        )
+    }
+
+
+
+
     //Metodos GET
     /*
     getAnimales(): Observable<Animal>{

@@ -1,8 +1,15 @@
+<app-navbar></app-navbar>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side " opened>
   
     <div *ngFor="let animal of animales" style="margin: 8px;">
-                                <mat-card class="example-card">
+
+                                
+                                      
+  </div>
+<div class= "row" style="width: 100%">
+  <div *ngFor= "let animal of animales" class="col-md-4" >
+          <mat-card class="example-card">
                                         <mat-card-header>
                                           <img mat-card-avatar src="{{animal.url_imagen}}">
                                           <mat-card-title>{{animal.nombre}}</mat-card-title>
@@ -13,20 +20,19 @@
                                         <mat-card-actions>
                                           <button mat-button (click)="drawer.toggle()" routerLink="{{animal.id}}">VER DETALLES</button>
                                         </mat-card-actions>
-                                      </mat-card>
-                                      
-                        </div>
+        </mat-card>
+    </div>
+</div>
+
   </mat-drawer>
 <mat-drawer-content>
-  <div class="cardcontainer">
-  <mat-card style="margin: 16px;" class="matcard">
-      <router-outlet style="margin: 0; padding: 0;"></router-outlet>
-        <mat-card-actions>
-            <button mat-button (click)="drawer.toggle()" routerLink="../animales">
+  <router-outlet style="margin: 0; padding: 0;"></router-outlet>
+<div class="container">
+  <button mat-button (click)="drawer.toggle()" routerLink="../animales">
                 Cerrar
-              </button>
-          </mat-card-actions>
-  </mat-card>
-  </div>
+  </button>
+</div>
+  
+
 </mat-drawer-content>
 </mat-drawer-container>
